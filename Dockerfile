@@ -18,11 +18,11 @@ RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/sh
 # إنشاء المجلدات المطلوبة للتخزين والشهادات
 RUN mkdir -p /vault/config /vault/certs /vault/data
 
-# نسخ ملفات المشروع داخل الحاوية من الجذر
-COPY vault.hcl /vault/config/vault.hcl
-COPY vault.crt /vault/certs/vault.crt
-COPY vault.key /vault/certs/vault.key
-COPY start.sh /vault/start.sh
+# نسخ ملفات المشروع داخل الحاوية
+COPY vault-project/vault.hcl /vault/config/vault.hcl
+COPY vault-project/vault.crt /vault/certs/vault.crt
+COPY vault-project/vault.key /vault/certs/vault.key
+COPY vault-project/start.sh /vault/start.sh
 
 # إعطاء صلاحيات تنفيذ لـ start.sh
 RUN chmod +x /vault/start.sh

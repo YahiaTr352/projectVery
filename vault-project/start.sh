@@ -1,17 +1,17 @@
 #!/bin/bash
 
 # إعداد المتغيرات البيئية
-export VAULT_ADDR="https://0.0.0.0:8200"  # عنوان Vault الجديد بدل localhost
-export VAULT_SKIP_VERIFY=true  # إذا كنت مش معتمد على شهادات موثوقة
+export VAULT_ADDR="https://0.0.0.0:8200"
+export VAULT_SKIP_VERIFY=true
 
-# تشغيل Vault باستخدام ملف التكوين
-vault server -config=/vault-project/vault.hcl &  # تأكد من مسار الملف صحيح في بيئة السحابة
+# تشغيل Vault باستخدام ملف التكوين الصحيح
+vault server -config=/vault/config/vault.hcl &
 
 # الانتظار حتى يبدأ Vault
-sleep 5  # خلي Vault يشتغل شوي قبل ما تواصل
+sleep 5
 
 # إلغاء القفل باستخدام المتغير البيئي
-vault operator unseal $VAULT_UNSEAL_KEY  # خلي المفتاح بيئي عشان ما تفضح التوكن
+vault operator unseal "$VAULT_UNSEAL_KEY"
 
 # تسجيل الدخول باستخدام التوكن البيئي
-vault login $VAULT_TOKEN  # خلي التوكن بيئي عشان تحفظ الأمان
+vault login "$VAULT_TOKEN"
