@@ -7,7 +7,8 @@ RUN apt-get update && apt-get install -y \
   unzip \
   curl \
   gnupg \
-  vim
+  vim \
+  jq  # ضروري لـ init.sh
 
 # تثبيت Vault من HashiCorp
 RUN curl -fsSL https://apt.releases.hashicorp.com/gpg | gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg && \
@@ -23,15 +24,16 @@ COPY vault-project/vault.hcl /vault/config/vault.hcl
 COPY vault-project/vault.crt /vault/certs/vault.crt
 COPY vault-project/vault.key /vault/certs/vault.key
 COPY vault-project/start.sh /vault/start.sh
+COPY vault-project/init.sh /vault/init.sh
 
-# إعطاء صلاحيات تنفيذ لـ start.sh
-RUN chmod +x /vault/start.sh
+# إعطاء صلاحيات تنفيذ للسكريبتات
+RUN chmod +x /vault/start.sh /vault/init.sh
 
-# تعيين مسار العمل داخل الحاوية
+# تعيين مسار العمل
 WORKDIR /vault
 
-# فتح البورت 8200 المستخدم من Vault
+# فتح البورت
 EXPOSE 8200
 
-# أمر بدء التشغيل
+# أمر التشغيل
 CMD ["./start.sh"]
