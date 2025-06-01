@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # إعداد المتغيرات البيئية
-export VAULT_ADDR="https://0.0.0.0:8200"
+export VAULT_ADDR="https://127.0.0.1:8200"  # بدل 0.0.0.0 استعمل localhost
 export VAULT_SKIP_VERIFY=true
 
 # تشغيل Vault باستخدام ملف التكوين الصحيح

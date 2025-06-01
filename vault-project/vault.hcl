@@ -1,11 +1,13 @@
+disable_mlock = true  # لحل مشكلة الذاكرة على Render
+
 listener "tcp" {
-  address       = "0.0.0.0:8200"  # استمع على جميع العناوين
-  tls_cert_file = "/vault/certs/vault.crt"  # المسار داخل الحاوية
-  tls_key_file  = "/vault/certs/vault.key"  # المسار داخل الحاوية
+  address       = "0.0.0.0:8200"
+  tls_cert_file = "/vault/certs/vault.crt"
+  tls_key_file  = "/vault/certs/vault.key"
 }
 
 storage "file" {
-  path = "/vault/data"  # مسار لتخزين البيانات داخل الحاوية
+  path = "/vault/data"
 }
 
-ui = true  # تفعيل واجهة المستخدم
+ui = true
