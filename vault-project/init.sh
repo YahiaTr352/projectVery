@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export VAULT_ADDR="https://projectvery.onrender.com"
+export VAULT_ADDR="https://127.0.0.1:8200"
 export VAULT_SKIP_VERIFY=true
 
 # افحص إذا Vault مهيّأ
