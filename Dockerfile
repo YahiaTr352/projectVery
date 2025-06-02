@@ -26,7 +26,7 @@ COPY vault-project/vault.key /vault/certs/vault.key
 COPY vault-project/start.sh /vault/start.sh
 COPY vault-project/init.sh /vault/init.sh
 
-# إعطاء صلاحيات تنفيذ للسكريبتات
+# إعطاء صلاحيات تنفيذ للسكريبتات VAULT_API_ADDR
 RUN chmod +x /vault/start.sh /vault/init.sh
 
 # تعيين مسار العمل

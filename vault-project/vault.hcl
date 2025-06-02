@@ -11,3 +11,6 @@ storage "file" {
 }
 
 ui = true
+
+# العنوان الخارجي لـ Vault
+api_addr = "https://projectvery.onrender.com"
